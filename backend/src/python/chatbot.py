@@ -66,6 +66,64 @@ def chat():
         print(f"Error in chat endpoint: {e}")
         return jsonify({'response': 'Internal server error'}), 500
 
+def analyze_complaint(text: str) -> dict:
+    """Analyze complaint using Groq to get category, priority, etc."""
+    prompt = f"""
+    Analyze the following railway complaint and extract the following details in JSON format:
+    1. Dominant_Category: (e.g., cleanliness, staff_behaviour, security, delay, ticketing, catering, medical, other)
+    2. Categories: [list of relevant sub-categories]
+    3. Priority: (High, Medium, Low)
+    4. Severity: (Critical, Major, Minor)
+    5. Sentiment_Label: (Positive, Negative, Neutral)
+    6. Sentiment_Confidence: (float betweeen 0 and 1)
+
+    Complaint: "{text}"
+    
+    Return ONLY valid JSON. Do not include any explanation.
+    """
+    try:
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {"role": "system", "content": "You are a complaint analysis system. Output JSON only."},
+                {"role": "user", "content": prompt}
+            ],
+            model="mixtral-8x7b-32768",
+            temperature=0.1,
+            max_tokens=500,
+            response_format={"type": "json_object"}
+        )
+        return chat_completion.choices[0].message.content
+    except Exception as e:
+        print(f"Error in analyze_complaint: {e}")
+        return "{}"
+
+@app.route('/process_query', methods=['POST'])
+def process_query():
+    print("Received a request to /process_query")
+    try:
+        data = request.get_json()
+        query = data.get('query', '')
+        
+        if not query:
+            return jsonify({'error': 'No query provided'}), 400
+            
+        import json
+        analysis_str = analyze_complaint(query)
+        analysis_json = json.loads(analysis_str)
+        
+        return jsonify(analysis_json)
+    except Exception as e:
+        print(f"Error in process_query: {e}")
+        # Return a safe default if AI fails
+        return jsonify({
+            "Dominant_Category": "Other",
+            "Categories": ["uncategorized"],
+            "Priority": "Medium",
+            "Severity": "Minor",
+            "Sentiment_Label": "Neutral",
+            "Sentiment_Confidence": 0.0
+        })
+
 if __name__ == '__main__':
     print("Starting Flask server...")
     app.run(debug=True, host='0.0.0.0', port=5000)
