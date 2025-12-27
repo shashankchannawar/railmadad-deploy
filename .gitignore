@@ -12,7 +12,7 @@ backend/src/python/venv/
 __pycache__/
 *.py[cod]
 
-# ML Models & Heavy Files (Excluded for Deployment)
+# ML Models & Heavy Files
 *.safetensors
 *.pt
 *.pth
@@ -24,6 +24,11 @@ __pycache__/
 *.bin
 *.onnx
 
+# Data Files & Logs
+*.csv
+*.xlsx
+*.log
+
 # Build Outputs
 dist/
 first-dist/
@@ -34,4 +39,6 @@ coverage/
 # Misc
 .DS_Store
 .vscode/
-*.log
+
+# Exceptions
+!backend/src/python/RAIL MADAD.csv

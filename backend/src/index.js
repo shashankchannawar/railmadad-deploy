@@ -13,8 +13,8 @@ import categoryAdmin from './routes/categoryAdmin.js'
 const app = express();
 const port = process.env.PORT || 5001;
 
-app.use(express.json());  
-app.use(cors()); 
+app.use(express.json());
+app.use(cors());
 
 
 app.use('/api', railInfoRoutes);
@@ -23,15 +23,16 @@ connectDB();
 
 app.use('/api/complaints', complaintRoutes);
 app.use('/api/admin-issues', adminIssuesRoute);
-app.use('/api/admins',adminAuth)
+app.use('/api/admins', adminAuth)
 app.use('/api/category-admins', categoryAdmin)
 
 app.post("/api/chatbot", async (req, res) => {
-  const message = req.body.message;  
+  const message = req.body.message;
 
   try {
-   
-    const response = await axios.post("http://127.0.0.1:5000/api", {
+
+    const pythonUrl = process.env.PYTHON_API_URL || "http://127.0.0.1:5000/api";
+    const response = await axios.post(pythonUrl, {
       message: message,
     });
 

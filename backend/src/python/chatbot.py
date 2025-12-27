@@ -17,7 +17,9 @@ client = Groq(
 
 # Load dataset from CSV file
 try:
-    with open(r"D:\Web\RailMadad\backend\src\python\RAIL MADAD.csv", "r") as file:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(current_dir, "RAIL MADAD.csv")
+    with open(csv_path, "r") as file:
         csv_content = file.read()
 except Exception as e:
     print(f"Error reading CSV file: {e}")
