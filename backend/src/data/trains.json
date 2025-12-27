@@ -1,0 +1,62 @@
+[
+    {
+        "Train No.": "12951/52",
+        "Train Name": "Mumbai Rajdhani Express",
+        "Route": "Mumbai Central \u2013 New Delhi",
+        "Avg Speed (km/h)": 91
+    },
+    {
+        "Train No.": "12001/02",
+        "Train Name": "Bhopal Shatabdi Express",
+        "Route": "New Delhi \u2013 Habibganj",
+        "Avg Speed (km/h)": 91
+    },
+    {
+        "Train No.": "12277/78",
+        "Train Name": "Satabdi Express",
+        "Route": "Howrah \u2013 Puri",
+        "Avg Speed (km/h)": 85
+    },
+    {
+        "Train No.": "12245/46",
+        "Train Name": "Duronto Express",
+        "Route": "Howrah \u2013 Yesvantpur",
+        "Avg Speed (km/h)": 80
+    },
+    {
+        "Train No.": "12953/54",
+        "Train Name": "August Kranti Rajdhani",
+        "Route": "Mumbai Central \u2013 Hazrat Nizamuddin",
+        "Avg Speed (km/h)": 85
+    },
+    {
+        "Train No.": "12903/04",
+        "Train Name": "Golden Temple Mail",
+        "Route": "Mumbai Central \u2013 Amritsar",
+        "Avg Speed (km/h)": 58
+    },
+    {
+        "Train No.": "12909/10",
+        "Train Name": "Garib Rath Express",
+        "Route": "Bandra Terminus \u2013 Hazrat Nizamuddin",
+        "Avg Speed (km/h)": 78
+    },
+    {
+        "Train No.": "12009/10",
+        "Train Name": "Shatabdi Express",
+        "Route": "Mumbai Central \u2013 Ahmedabad",
+        "Avg Speed (km/h)": 85
+    },
+    {
+        "Train No.": "12961/62",
+        "Train Name": "Avantika Express",
+        "Route": "Mumbai Central \u2013 Indore",
+        "Avg Speed (km/h)": 65
+    },
+    {
+        "Train No.": "12925/26",
+        "Train Name": "Paschim Express",
+        "Route": "Mumbai Central \u2013 Amritsar",
+        "Avg Speed (km/h)": 60
+    }
+]
