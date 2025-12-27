@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Search, Clock, CheckCircle, AlertTriangle, Loader, MessageCircle, FileText, Calendar, User } from 'lucide-react';
 import Header from '../components/Header';
-import Header from '../components/Header';
+
 import Footer from '../components/Footer';
 import API_BASE_URL from "../config";
 
